@@ -1,0 +1,60 @@
+<!--  Theme Form - Form add Photo Or Video -->
+  <ion-content>
+    <ion-grid *ngIf="data != null">
+      <ion-row padding>
+        <ion-col col-12 text-center>
+          <!-- <span span-small>{{data.rateTitle}}</span> -->
+        </ion-col>
+        <ion-col col-12 text-center>
+            <!-- <ion-icon
+              *ngFor="let item of data.iconsStars;let i = index"
+              color="accent"
+              [name]="item.icon"
+              [ngClass]="{'active':item.isActive}"
+              (click)="onStarClass(data.iconsStars, i, $event)">
+            </ion-icon> -->
+        </ion-col>
+        <ion-col col-12 text-center>
+          <span span-small>{{data.title}}</span>
+        </ion-col>
+        <ion-col col-12 textarea>
+          <ion-item no-lines>
+            <ion-textarea [placeholder]="data.descriptionPlaceholder" [(ngModel)]="item.description"></ion-textarea>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12>
+          <div *ngIf="item.imageUrl" background-size [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}"></div>
+        </ion-col>
+
+        <ion-col col-12>
+          <ion-list radio-group >
+            <!-- Header Title Top -->
+            <ion-list-header header-section no-margin>
+              <h1 header-title text-capitalize>{{data.pgData.title}}</h1>
+            </ion-list-header>
+            <!--Content -->
+            <ion-item no-lines *ngFor="let item of data.pgData.items; let i= index">
+              <ion-radio item-start [value]="item.id" (ionSelect)="onEvent('onSelect',item)"></ion-radio>
+              <!--Content Title-->
+              <ion-label item-title>{{item.title}}</ion-label>
+              <!--Content Subtitle-->
+              <ion-label item-end text-right item-subtitle>{{item.subtitle}}</ion-label>
+            </ion-item>
+          </ion-list>
+
+        </ion-col>
+
+        <ion-col col-12>
+          <button ion-button button-clear-outline round outline block text-capitalize (click)="onAddVideoPhoto()">
+            {{data.btnAddPhotoOrVideo}}
+          </button>
+        </ion-col>
+        <ion-col col-12>
+          <button ion-button button-clear-outline round outline block text-capitalize (click)="onEvent('onSubmit', $event)">
+            {{data.btnSubmit}}
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  </ion-content>

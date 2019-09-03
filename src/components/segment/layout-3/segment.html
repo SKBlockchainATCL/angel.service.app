@@ -1,0 +1,80 @@
+<!-- Theme Segment - Segment Post -->
+<ion-header>
+  <!--Segment Section -->
+  <ion-toolbar no-padding>
+    <div segment-block *ngIf="data != null">
+      <ion-segment has-header [(ngModel)]="selectedItem">
+        <ion-segment-button text-capitalize value="Page1">
+          내 활동 Log
+        </ion-segment-button>
+        <ion-segment-button text-capitalize value="Page2">
+          전체 활동 Log
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<!-- Content-->
+<ion-content>
+  <ion-grid no-padding *ngIf="data != null">
+    <!--- SETTINGS PAGE1 SCREEN -->
+    <ion-row *ngIf="isEnabled('Page1')">
+        <ion-col col-12 col-lg-6 col-xl-4 *ngFor="let item of data.page1.items; let i= index"  (click)="onEvent('onItemClick', item, $event)">
+          <!-- Card -->
+          <ion-card padding box-shadow (click)="onEvent('onItemClick', item, $event)">
+            <img [src]="item.image" />
+             <ion-card-header>
+               <span font-bold font-small ion-text color="accent">{{item.time}}</span>
+               <h2 card-title>{{item.title}}</h2>
+               <p card-subtitle text-wrap>{{item.description}}</p>
+             </ion-card-header>
+            <ion-card-content no-padding>
+              <ion-row no-padding>
+                <ion-col col-auto no-padding>
+                  <button ion-button button-icon-clear text-capitalize icon-start clear (click)="onEvent('onLike', item, $event)">
+                    <ion-icon [ngClass]="{'active' : item.like.isActive}" [name]="item.like.icon"></ion-icon>
+                    {{item.like.number}}
+                  </button>
+                </ion-col>
+                <ion-col col-auto no-padding>
+                  <button ion-button button-icon-clear text-capitalize icon-start clear (click)="onEvent('onComment', item, $event)">
+                    <ion-icon  [ngClass]="{'active' : item.comment.isActive}" [name]="item.comment.icon"></ion-icon>
+                    {{item.comment.number}}
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+    </ion-row>
+    <!--- SETTINGS PAGE2 SCREEN -->
+    <ion-row *ngIf="isEnabled('Page2')">
+      <ion-col col-12 col-lg-6 col-xl-4 *ngFor="let item of data.page2.items; let i= index" (click)="onEvent('onItemClick', item, $event)">
+        <!-- Card -->
+        <ion-card padding box-shadow>
+          <img [src]="item.image" />
+           <ion-card-header>
+             <span font-bold font-small ion-text color="accent">{{item.time}}</span>
+             <h2 card-title>{{item.title}}</h2>
+             <p card-subtitle text-wrap>{{item.description}}</p>
+           </ion-card-header>
+          <ion-card-content no-padding>
+            <button ion-button button-icon-clear text-capitalize icon-start clear (click)="onEvent('onLike', item, $event)">
+              <ion-icon [ngClass]="{'active' : item.like.isActive}" [name]="item.like.icon"></ion-icon>
+              {{item.like.number}}
+            </button>
+            <button ion-button button-icon-clear text-capitalize icon-start clear (click)="onEvent('onComment', item, $event)">
+              <ion-icon  [ngClass]="{'active' : item.comment.isActive}" [name]="item.comment.icon"></ion-icon>
+              {{item.comment.number}}
+            </button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-fab #fab bottom right>
+  <button button-ion-fab ion-fab (click)="goPostWrite()">
+  <ion-icon name="add"></ion-icon>
+</button>
+</ion-fab>
