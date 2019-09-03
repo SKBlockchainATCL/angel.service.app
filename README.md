@@ -3,37 +3,39 @@
 ## Framework
 - Ionic 3 (https://ionicframework.com/docs/v3/)
 ## Install
-- Ionic 3.19.1 (npm global 설치 :  npm i -g ionic@3.19.1)
-- Cordova 8.1.0 (npm global 설치 : npm i -g cordova@8.1.0)
-- Android (기기 빌드 안 할시 pass)
-* JDK (v1.8.x)
-* Android SDK (Android Studio:https://developer.android.com/studio)
-* Gradle (https://gradle.org/install/) 
-- iOS (기기 빌드 안 할시 pass)
-* XCode
+* Ionic 3.19.1 (npm global 설치 :  npm i -g ionic@3.19.1)
+* Cordova 8.1.0 (npm global 설치 : npm i -g cordova@8.1.0)
+* Android (기기 빌드 안 할시 pass)
+    * JDK (v1.8.x)
+    * Android SDK (Android Studio:https://developer.android.com/studio)
+    * Gradle (https://gradle.org/install/) 
+* iOS (기기 빌드 안 할시 pass)
+    * XCode
 
 
 ## 테스트
-- 로컬 웹서버
+* 로컬 웹서버
 ~~~bash
 ionic serve
 ~~~
-- Android
-* Andorid Studio 시뮬레이터
+* Android
+    * Andorid Studio 시뮬레이터 :
 아래처럼 빌드 후, Android Studio 에서 빌드 프로젝트(프로젝트명>platforms>android)를 불러와서 테스트
 Android Studio 에서 불러올 때 Gradle 업그레이드 관련 창이 뜨면 업그레이드 하지 말 것.(하게 되면 꼬임)
+
 ~~~bash
 ionic cordova build android
 ~~~
-* 디바이스 에서 테스트
+
+    * 디바이스 에서 테스트 :
 디바이스를 usb 연결하고, 아래의 command 수행. 이때, 해당 기기의 설정> 개발자 옵션 > USB 디버깅 을 활성화 해줘야 함. 
+
 ~~~bash
 ionic cordova run android --device
-~~~bash
+~~~
 
-- iOS
-XCode 시뮬레이터
-디바이스에서 테스트
+* iOS
+    * XCode 시뮬레이터 > 디바이스에서 테스트
 
 ## 주요 folder structure
 
@@ -69,12 +71,12 @@ ionic g page 페이지명
 * *.moudle.ts : 모듈 스크립트(typescript) 파일
 
 
-- 현재 svns 에서 사용중인 페이지 (나머지는 템플릿용 화면)
-* pages/home
-* pages/login
-* pages/post-create
-* pages/voluntary-list
-* pages/volunteer-log
+* 현재 svns 에서 사용중인 페이지 (나머지는 템플릿용 화면)
+    * pages/home
+    * pages/login
+    * pages/post-create
+    * pages/voluntary-list
+    * pages/volunteer-log
 
 ## Provider 생성
 Provider 는 각 페이지에서 사용할 서비스 제공자입니다.
@@ -93,6 +95,7 @@ Component 는 주로 화면 구성 요소를 포함한 컴포넌트 단위를 �
 Ionic3 에서는 아래의 명령어를 수행 시 components 폴더 하위로 컴포넌트명에 해당하는 폴더가 생기며 그에 따른 파일들이 자동 생성됩니다.
 
 또한, components 폴더에는 components.module.ts 파일이 자동생성되며, 컴포넌트 모듈을 관리합니다. 
+
 ~~~bash
 ionic g component 컴포넌트명
 ~~~
